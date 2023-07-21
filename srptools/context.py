@@ -220,10 +220,16 @@ class SRPContext(object):
         :rtype: bytes
         """
         h = self.hash
+        # prove = h(
+        #     h(self._prime) ^ h(self._gen),
+        #     h(self._user),
+        #     salt,
+        #     client_public,
+        #     server_public,
+        #     session_key,
+        #     as_bytes=True
+        # )
         prove = h(
-            h(self._prime) ^ h(self._gen),
-            h(self._user),
-            salt,
             client_public,
             server_public,
             session_key,
